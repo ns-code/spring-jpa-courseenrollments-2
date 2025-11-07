@@ -1,6 +1,10 @@
-# spring-jpa-courseenrollments
-This project explores a Spring Data JPA based student enrollments in courses having many-to-many relationship between the entities Student and Course.
+# spring-jpa-courseenrollments-2
 
+This project is a refactored version of [spring-jpa-courseenrollments](https://github.com/ns-code/spring-jpa-courseenrollments) This project explores a Spring Data JPA based student enrollments in courses having many-to-many relationship between the entities Student and Course. 
+
+## Features
+
+The many-to-many relationship between the students and courses is modeled with an associative table Enrollment resulting in one-to-many relationships between student and enrollments and course and enrollments. The composite key approach is used. An embedded h2 DB is used.
 
 ## Usage
 
