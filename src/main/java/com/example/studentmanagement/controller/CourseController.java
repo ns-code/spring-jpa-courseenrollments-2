@@ -2,19 +2,23 @@ package com.example.studentmanagement.controller;
 
 import com.example.studentmanagement.entity.Course;
 import com.example.studentmanagement.repository.CourseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
+@Transactional
 @RequestMapping("/api/courses")
 public class CourseController {
     
-    @Autowired
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
     
     @GetMapping
     public List<Course> getAllCourses() {

@@ -2,23 +2,25 @@ package com.example.studentmanagement.controller;
 
 import com.example.studentmanagement.entity.Student;
 import com.example.studentmanagement.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
+@RequiredArgsConstructor
+@Transactional
 @RequestMapping("/api/students")
 public class StudentController {
     
-    @Autowired
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
     
     @GetMapping
     public ResponseEntity<Page<Student>> getAllStudents(

@@ -8,27 +8,29 @@ import com.example.studentmanagement.entity.Student;
 import com.example.studentmanagement.entity.Course;
 import com.example.studentmanagement.repository.EnrollmentRepository;
 import com.example.studentmanagement.repository.StudentRepository;
+
+import lombok.RequiredArgsConstructor;
+
 import com.example.studentmanagement.repository.CourseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@RequiredArgsConstructor
+@Transactional
 @RequestMapping("/api/enrollments")
 public class EnrollmentController {
     
-    @Autowired
-    private EnrollmentRepository enrollmentRepository;
+    private final EnrollmentRepository enrollmentRepository;
     
-    @Autowired
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
     
-    @Autowired
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
     
     private EnrollmentDTO convertToDTO(Enrollment enrollment) {
         EnrollmentDTO dto = new EnrollmentDTO();
